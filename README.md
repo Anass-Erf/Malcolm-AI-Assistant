@@ -38,13 +38,6 @@ Optionally, a simple chart of top talkers (source IPs) is created and shown in t
 
 ## 📂 Repository Structure
 
-malcolm_rag/
-├── app.py                # FastAPI backend (API /ask, /healthz)
-├── ui.py                 # Streamlit front-end
-├── build_rag_index.py    # Script to build FAISS index from OpenSearch
-├── vectorstore.py        # FAISS wrapper
-├── .env                  # Config (OpenSearch, Ollama, etc.)
-└── requirements.txt
 
 | File | Purpose |
 |------|---------|
