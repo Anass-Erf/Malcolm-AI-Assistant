@@ -1,0 +1,37 @@
+# check versions and use what is optimal for you 
+
+# Web API
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.8.2
+python-dotenv==1.0.1
+
+# OpenSearch client
+opensearch-py==2.5.0
+
+# Embeddings & Vector store
+sentence-transformers==2.7.0
+faiss-cpu==1.8.0
+numpy==1.26.4
+pandas==2.2.2
+
+# Visualization & reporting
+plotly==5.23.0
+reportlab==4.2.2
+
+# HTTP + file uploads
+httpx==0.27.0
+python-multipart==0.0.9
+
+# PyTorch with CUDA 11.8 (last version supporting Pascal GPUs like GTX 1070) change if you have a better GPU and use lastest version.
+torch==2.1.2+cu118
+torchvision==0.16.2+cu118
+torchaudio==2.1.2+cu118
+--index-url https://download.pytorch.org/whl/cu118
+
+
+#pip install \
+#  torch==2.1.2+cu118 \
+#  torchvision==0.16.2+cu118 \
+#  torchaudio==2.1.2+cu118 \
+#  --index-url https://download.pytorch.org/whl/cu118

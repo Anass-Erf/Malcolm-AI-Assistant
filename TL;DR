@@ -1,0 +1,50 @@
+
+# 1. Activate your env
+source myenv/bin/activate
+
+# 2. Install deps
+pip install -r requirements.txt
+
+# 3. Build the FAISS index from Malcolm (last 7 days, GPU)
+python build_rag_index.py --days 7 --batch-size 1000 --device cuda
+
+# 4. Run the FastAPI backend and mistrall
+ollama run mistral  # ollama and mistral must be installed and configured before all this
+uvicorn app:app --host 0.0.0.0 --port 8080 --reload
+
+# 5. Check health
+curl http://127.0.0.1:8080/healthz
+
+# 6. Test ask endpoint
+curl -s -X POST http://127.0.0.1:8080/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question":"Quelles IP sources génèrent le plus d alertes critiques ?","days":7,"top_k":8}' | jq
+
+# 7. Run the Streamlit UI
+streamlit run ui.py
+
+🤖 Example Questions 
+# you may notice that the questions are in French, feel free to ask in English too but modify the prompt in app.py "build_prompt" function
+Analyse réseau : 
+
+« Quelles IP sources génèrent le plus d’alertes critiques ? »
+
+« Quels domaines DNS suspects ont été résolus ces 10 derniers jours ? »
+
+Suricata / IDS :
+
+« Quels types d’attaques Suricata a détectés récemment ? »
+
+« Quelles signatures d’alerte apparaissent le plus souvent ? »
+
+Zeek / Protocoles :
+
+« Quelles connexions TLS utilisent des certificats suspects ? »
+
+« Quels User-Agent HTTP suspects apparaissent dans les logs ? »
+
+Arkime / Sessions :
+
+« Quelles sont les top IP externes contactées par le réseau interne ? »
+
+« Quelles durées de sessions anormales ont été observées ? »

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+opensearch-py
+sentence-transformers
+faiss-cpu
+numpy
+pandas
+plotly
+httpx
+python-multipart
+reportlab
